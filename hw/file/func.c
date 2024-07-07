@@ -5,7 +5,7 @@ void _exit_(int code) {
     if(code == NULL) {
         return;
     }
-    _asm__volatile_(
+    asm volatile(
         "movl $1,%%eax\n\t"
         "movl %0,%%ebx\n\t"
         "int $0x80"
@@ -25,7 +25,7 @@ void _put_(const char *str) {
         lenght++;
         *str++;
    }
-   _asm__volatile_(
+   asm volatile(
         "movl $4,%%eax\n"
         "movl $1,%%ebx\n"
         "movl %0,%%ecx\n"
@@ -45,7 +45,7 @@ void _put_error_(const char *str) {
         lenght++;
         *str++;
    }
-   _asm__volatile_(
+   asm volatile(
         "movl $4,%%eax\n"
         "movl $2,%%ebx\n"
         "movl %0,%%ecx\n"
@@ -68,4 +68,23 @@ void _get_(char *buffer) {
         : "r" (buffer)
         : "=r" (int)sizeof(buffer) / sizeof(buffer[0])
     );
+}
+void _swap_(int *a,int *b) {
+    int temp = a;
+    b = a;
+    temp = b;
+}
+void _sort_(int *arr[]) {
+    int i;
+    int lenght = sizeof(arr) / sizeof(arr[0]]);
+    for(i = 0; i < lenght; i++) {
+        if(arr[i] = NULL) {
+            return;
+        }
+    }
+    for(i = 0;i < lenght -1;i++) {
+        if(arr[j] > arr[j++]) {
+            _swap_(&arr[j],&arr[j++]);
+        }
+    }
 }

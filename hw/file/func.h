@@ -7,10 +7,12 @@
  * (C) 2024 Bob Adlis
 */
 #define NULL ((void)*0)
+#ifndef FUNC_H
 #define FUNC_H
-#ifdef FUNC_H
 extern void _exit_(int code);
 extern void _put_(const char *str);
 extern void _put_error_(const char *str);
 extern void _get_(char *buffer);
+extern void _swap_(int *a,int *b);
+extern void _sort_(int *arr[]);
 #endif
